@@ -15,7 +15,7 @@ void handle_request(int client_socket)
 	if(sscanf(buffer,"%7s %1023s",method,path)!=2){close(client_socket);return;}
 	if(strcmp(method,"GET")==0 && (strcmp(path,"/")==0 || strcmp(path,"/index.html")==0))
 	{
-		FILE *f=fopen("../www/index.html","rb");
+		FILE *f=fopen("index.html","rb");
 	if(!f){
 		const char *resp404="HTTP/1.1 404 Not Found\r\nContent-Type: text/plain\r\n\r\n404 Not Found";
 		send(client_socket,resp404,strlen(resp404),0);
